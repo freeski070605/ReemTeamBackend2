@@ -80,7 +80,7 @@ router.post('/register', [
 // @desc    Authenticate user & get token
 // @access  Public
 router.post('/login', [
-  body('email').isEmail().withMessage('Please include a valid email'),
+  body('username').isUsername().withMessage('Please include a valid username'),
   body('password').exists().withMessage('Password is required')
 ], async (req, res) => {
   try {
@@ -89,10 +89,10 @@ router.post('/login', [
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     // Check for user
-    const user = await User.findOne({ email }).select('+password');
+    const user = await User.findOne({ username }).select('+password');
     if (!user) {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
