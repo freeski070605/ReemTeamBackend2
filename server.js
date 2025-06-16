@@ -9,7 +9,7 @@ const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 const winston = require('winston');
 const dotenv = require('dotenv')
-const {initializeTables} = require('./controllers/tablesController');
+const {initializeTables} = require('./controllers/tableController');
 
 // Load environment variables
 dotenv.config();
