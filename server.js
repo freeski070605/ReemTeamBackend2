@@ -9,7 +9,7 @@ const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 const winston = require('winston');
 const dotenv = require('dotenv')
-const {initializeTables} = require('./controllers/tableController');
+const initializeTables = require('./utils/initTables');
 
 // Load environment variables
 dotenv.config();
@@ -38,10 +38,13 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 
-// Connect to database
-connectDB(
-  initializeTables()
-);
+
+// Connect to MongoDB and initialize tables
+connectDB().then(async () => {
+  console.log('MongoDB Connected');
+  await initializeTables(); // No req/res, just backend logic
+});
+
 
 const app = express();
 
