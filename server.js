@@ -40,7 +40,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Connect to database
 connectDB({
-  initializeTables();
+  initializeTables()
 });
 
 const app = express();
