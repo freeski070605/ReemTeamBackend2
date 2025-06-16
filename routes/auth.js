@@ -80,7 +80,10 @@ router.post('/register', [
 // @desc    Authenticate user & get token
 // @access  Public
 router.post('/login', [
-  body('username').isUsername().withMessage('Please include a valid username'),
+  body('username')
+  .isLength({ min: 3, max: 20 }).withMessage('Username must be 3-20 characters')
+  .matches(/^[a-zA-Z0-9_]+$/).withMessage('Username must be alphanumeric with no spaces')
+,
   body('password').exists().withMessage('Password is required')
 ], async (req, res) => {
   try {
