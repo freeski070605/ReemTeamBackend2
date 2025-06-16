@@ -1,6 +1,12 @@
 const  mongoose = require('mongoose');
 
-
+const cardSchema = new mongoose.Schema({
+  id: String,
+  suit: String,
+  rank: String,
+  value: Number,
+  isHidden: { type: Boolean, default: false }
+});
 
 const playerSchema = new mongoose.Schema({
   id: String,
@@ -16,69 +22,6 @@ const playerSchema = new mongoose.Schema({
   hasDrawn: { type: Boolean, default: false },
   dropTime: Date
 }); 
-
-// Card schema
-const cardSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true
-  },
-  suit: {
-    type: String,
-    required: true,
-    enum: ['hearts', 'diamonds', 'clubs', 'spades', '?']
-  },
-  rank: {
-    type: String,
-    required: true
-  },
-  value: {
-    type: Number,
-    required: true
-  },
-  isHidden: {
-    type: Boolean,
-    default: false
-  }
-}, { _id: false });
-
-// Player schema
-const playerSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true
-  },
-  username: {
-    type: String,
-    required: true
-  },
-  isAI: {
-    type: Boolean,
-    default: false
-  },
-  hand: [cardSchema],
-  isDropped: {
-    type: Boolean,
-    default: false
-  },
-  canDrop: {
-    type: Boolean,
-    default: false
-  },
-  score: {
-    type: Number,
-    default: 0
-  },
-  penalties: {
-    type: Number,
-    default: 0
-  },
-  avatar: {
-    type: String
-  }
-}, { _id: false });
-
-
 
 const  gameSchema = new mongoose.Schema({
   players: [playerSchema],
