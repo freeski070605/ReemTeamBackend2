@@ -78,47 +78,7 @@ const playerSchema = new mongoose.Schema({
   }
 }, { _id: false });
 
-// Game schema
-const gameSchema = new mongoose.Schema({
-  players: [playerSchema],
-  currentPlayerIndex: {
-    type: Number,
-    default: 0
-  },
-  deck: [cardSchema],
-  discardPile: [cardSchema],
-  status: {
-    type: String,
-    enum: ['waiting', 'playing', 'ended'],
-    default: 'waiting'
-  },
-  stake: {
-    type: Number,
-    required: true
-  },
-  pot: {
-    type: Number,
-    default: function() {
-      return this.stake * 4; // 4 players each contribute the stake amount
-    }
-  },
-  winner: {
-    type: String,
-    default: null
-  },
-  winningMultiplier: {
-    type: Number,
-    default: 1
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  lastActionAt: {
-    type: Date,
-    default: Date.now
-  }
-});
+
 
 const  gameSchema = new mongoose.Schema({
   players: [playerSchema],
