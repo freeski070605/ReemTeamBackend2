@@ -266,6 +266,7 @@ function getAIThinkingTime(difficulty, actionType) {
     [AI_DIFFICULTY.EASY]: { min: 500, max: 1500 },
     [AI_DIFFICULTY.MEDIUM]: { min: 800, max: 2500 },
     [AI_DIFFICULTY.HARD]: { min: 1200, max: 3500 },
+  };
   
   const complexityMultiplier = {
     'draw': 1,
