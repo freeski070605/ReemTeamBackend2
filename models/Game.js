@@ -1,12 +1,6 @@
 const  mongoose = require('mongoose');
 
-const cardSchema = new mongoose.Schema({
-  id: String,
-  suit: String,
-  rank: String,
-  value: Number,
-  isHidden: { type: Boolean, default: false }
-});
+
 
 const playerSchema = new mongoose.Schema({
   id: String,
