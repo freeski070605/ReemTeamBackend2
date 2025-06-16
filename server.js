@@ -8,7 +8,8 @@ const helmet = require('helmet');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 const winston = require('winston');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv')
+const {initializeTables} = require('./controllers/tablesController');
 
 // Load environment variables
 dotenv.config();
